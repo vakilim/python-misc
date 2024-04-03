@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+"""
 # Read the CSV file
 df = pd.read_csv('Si_5s_LED.csv', skiprows=53)
 print(df.head())
@@ -9,6 +10,7 @@ print(df.head())
 # Extracting data from CSV columns
 wavelength = df.iloc[:, 0]
 intensity = df.iloc[:, 1]
+"""
 
 """
 # Plot original data
@@ -33,10 +35,10 @@ def calculate_thickness(n1, n2, lambda1,lambda2, theta_deg):
    
     return thickness
 
-n1 = 4.09 #ref. index 1
-lambda1 = 549.6 #wavelength 1, 552
-n2 = 3.77 #ref. index 2
-lambda2 = 713.5 #wavelength 2, 718
+n1 = 1.7942 #ref. index 1, 4.088
+lambda1 = 449.35 #wavelength 1, 549.6
+n2 = 1.7452 #ref. index 2, 3.770
+lambda2 = 610.86 #wavelength 2, 713.5
 theta = 45  # angle in degrees
 
 result = calculate_thickness(n1, n2, lambda1, lambda2, theta)
