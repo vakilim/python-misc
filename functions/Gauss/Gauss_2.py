@@ -17,7 +17,7 @@ y = gaussian(x,400,180) #x,mu,sig
 
 plt.plot(x,y)
 plt.show()
-#np.savetxt("output_Gaussian.dat", np.array([x, y]).T)
+np.savetxt("output_Gaussian.dat", np.array([x, y]).T)
 
 """
 
