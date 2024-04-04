@@ -8,7 +8,7 @@ from scipy.ndimage import gaussian_filter1d
 
 #os.chdir('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs')
 # Read the CSV file
-df = pd.read_csv('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs\\Kapton_25um_10s_LED2.csv', skiprows=53)
+df = pd.read_csv('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs\\PET_2_5um_10s_LED2.csv', skiprows=53)
 
 print(df.head())
 
@@ -40,6 +40,8 @@ plt.plot(wavelength, smoothed_intensity, label='Smoothed Data', color='red')
 plt.xlabel('Wavelength')
 plt.ylabel('Intensity')
 plt.title('Original and Smoothed Data')
+plt.xticks(np.arange(0, len(wavelength), step=1000),rotation=0)
+#plt.xticks(rotation=90)
 plt.legend()
 plt.show()
 
