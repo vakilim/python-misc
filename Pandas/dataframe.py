@@ -31,21 +31,22 @@ print(df)
 
 df.to_csv("df_output.csv")
 
+# Creating a dataframe from a list, where each list represents a column
+data_list = [['John', 25, 'Engineer'],
+             ['Alice', 30, 'Manager'],
+             ['Bob', 28, 'Analyst']]
 
-# create Dataframe from a list of dictionaries, row orientation
-data = [
-        {'Name':'Peter', 'Age':20, 'City':'Tempe'},
-        {'Name':'Rebecca', 'Age':24, 'City':'Sheffield'},
-        {'Name':'Louis', 'Age':21, 'City':'Paris'}
-        ]
-df2 = pd.DataFrame(data)
-print(df2)
+df_list = pd.DataFrame(data_list, columns=['Name', 'Age', 'Position'])
 
-# create Dataframe from a dictionary of lists, column orientation
-data = {
-        'Name':['Peter','Rebecca', 'Louis'],
-        'Age':[20,24,21],
-        'City':['Tempe','Sheffield', 'Paris']
-        }
-df3 = pd.DataFrame(data)
-print(df3)
+# Creating a dataframe from a dictionary (collection of key-value pairs). keys are column names.
+data_dict = {'Name': ['John', 'Alice', 'Bob'],
+             'Age': [25, 30, 28],
+             'Position': ['Engineer', 'Manager', 'Analyst']}
+
+df_dict = pd.DataFrame(data_dict)
+
+print("Dataframe created from list:")
+print(df_list)
+print("\nDataframe created from dictionary:")
+print(df_dict)
+
