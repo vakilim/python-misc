@@ -8,7 +8,7 @@ from scipy.ndimage import gaussian_filter1d
 
 #os.chdir('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs')
 # Read the CSV file
-df = pd.read_csv('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs\\IPA100_20s_LED2.csv', skiprows=53)
+df = pd.read_csv('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs\\SiN_100nm_10s_LED2.csv', skiprows=53)
 
 print(df.head())
 
@@ -46,7 +46,7 @@ plt.legend()
 plt.show()
 
 # Find peaks in the smoothed_intensity data
-peaks, _ = find_peaks(smoothed_intensity, height=0.004, width=30, distance=100)
+peaks, _ = find_peaks(smoothed_intensity, height=0.005, width=30, distance=100)
 
 # Plot the smoothed_intensity data with indicated peaks
 plt.figure(figsize=(10, 6))
