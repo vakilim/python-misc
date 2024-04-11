@@ -17,10 +17,10 @@ def calculate_thickness(n1, n2, lambda1,lambda2, theta_deg):
     return thickness
 
 #add values for the wavelength and the refractive index
-lambda1 = 4.47E+02
-lambda2 = 6.20E+02
-n1 = 2.057
-n2 = 2.0202
+lambda1 = 0.6207601929
+lambda2 = 0.6346069336
+n1 = 1.7434
+n2 = 1.7411
 theta = 45  # angle in degrees
 
 result = calculate_thickness(n1, n2, lambda1, lambda2, theta)
