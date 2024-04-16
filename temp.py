@@ -9,35 +9,33 @@ from math import sin, cos
 from os import listdir, system
 import shutil
 
+x=5
+print (x)
+
 def add_numbers(w, e, r):
     a = w + e
     b = w + r
     c = r + sin(r)
     print(a, b, c,)
 
-add_numbers(1, 2, 3)
+add_numbers(1, 2, 3) #runs the function while transmiting the values 1,2,3 for w,e,r
 
-print("\n")
 print(math.sqrt(4))
 print(np.pi)
 print("\n")
-print("Hello")
+print("Hello World!")
 
 path = os.getcwd()
-
 print("we are in ")
-print(dir)
 print(path)
 
+print(dir)
+print(os.getcwd())
+print(os.listdir())
 
-x=5
-print ('Mo')
-print (x)
-print (dir)
-print (os.getcwd())
-print (os.listdir())
+print("we are in " + os.getcwd())
 
-original = r'Ohne Titel.py'
+original = r'New.py'
 target = r'Programs'
 #shutil.move(original,target)
 
@@ -52,26 +50,16 @@ print (os.getcwd())
 #os.chdir("..")
 """
 
+"""
 name = input("Enter your name: ")
 print("Hello", name)
+"""
 
-
-
-import math
-import os
-import numpy as np
 
 def test(x):
 	y=x*2
 	return y
 
-print ("we are in " + os.getcwd())
-path = os.getcwd()
-
-print ("\n")
-
-print ("we are in ") 
-print (path)
 
 shopping_list=['a', 'b']
 

@@ -1,8 +1,9 @@
-"""
 import os
 import math
+from math import sin, cos
 import re
-"""
+import numpy as np
+
 
 
 """
@@ -11,14 +12,6 @@ x=3
 name="Mo"
 lst = [1,2,5,"bread"]
 """
-
-"""
-def test(x):
-	y=x**2
-	return y
-
-"""
-
 
 
 """
@@ -50,8 +43,6 @@ foo(42)
 
 
 """
-from math import sin, cos
-
 def call_counter (func):
 	def helper (x):
 		helper.counter += 1
@@ -135,7 +126,6 @@ print (x.charge)
 """
 
 
-import numpy as np
 """
 a=np.array([0,1,2,3])
 print (a)
