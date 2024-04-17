@@ -8,20 +8,22 @@ from scipy.ndimage import gaussian_filter1d
 #os.chdir('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs')
 
 # Read the CSV file
-df = pd.read_csv('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs\\PET_2_5um_10s_LED2.csv', skiprows=53, nrows=3645)
+df = pd.read_csv('C:\\Git\python-misc\\functions\\peak_detection\\CSVs\\PET_2_5um_10s_LED2.csv', skiprows=53, nrows=3645)
 
-print(df.head(3))
-print(df.tail(3))
+#print(df.head(3))
+#print(df.tail(3))
 
-# Rename columns
+# Assign column names
 df.columns = ['wavelength', 'intensity']
 
-print(type(df['wavelength']))
+print( df.dtypes)
 
-print("\n", df.dtypes)
+print("\n", type(df['wavelength']))
 
+"""
 # Create a new column by copying values of the wavelength column
-#df['wavelength_copy'] = (df['wavelength'])
+df['wavelength_copy'] = (df['wavelength'])
+"""
 
 # Extracting data from CSV columns
 wavelength = df.iloc[:, 0].values #first column
@@ -29,7 +31,11 @@ intensity = df.iloc[:, 1].values #third column
 
 print(type(wavelength))
 
-print(wavelength)
+"""
+#turn values into a one-dimensional numpy array
+Wavelength = np.array(df.iloc[:, 0])
+print(type(Wavelength))
+"""
 
 #df.to_csv("df_output.csv")
 
