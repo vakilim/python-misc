@@ -10,7 +10,7 @@ from os import listdir, system
 import shutil
 
 x=5
-print (x)
+print(x)
 
 def add_numbers(w, e, r):
     a = w + e
@@ -55,7 +55,7 @@ name = input("Enter your name: ")
 print("Hello", name)
 """
 
-
+"""
 def test(x):
 	y=x*2
 	return y
@@ -90,5 +90,10 @@ class Robot:
 
 	def say_hi(obj):
 		print("Hi I am " + obj.get_name())
+"""
+
+
+
+
 
 
