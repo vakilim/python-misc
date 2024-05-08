@@ -9,4 +9,4 @@ y = v(x)
 
 plt.plot(x, y)
 plt.show()
-np.savetxt("output.dat", np.array([x, y]).T)
+#np.savetxt("output.dat", np.array([x, y]).T)

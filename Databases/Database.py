@@ -47,10 +47,10 @@ def main():
     create_tables(conn)
 
     # Insert some sample data
-    insert_user(conn, 'user1', 'user1@example.com')
-    insert_user(conn, 'user2', 'user2@example.com')
-    insert_post(conn, 1, 'This is a post by user1')
-    insert_post(conn, 2, 'This is a post by user2')
+    insert_user(conn, "user1", "user1@example.com") #use "" instead of '' here
+    insert_user(conn, "user2", "user2@example.com")
+    insert_post(conn, 1, "This is a post by user1")
+    insert_post(conn, 2, "This is a post by user2")
 
     # Retrieve and print all users
     print("Users:")
@@ -67,3 +67,29 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+"""
+command line syntax:
+    
+CREATE TABLE IF NOT EXISTS Users (
+                        id INTEGER PRIMARY KEY,
+                        username TEXT NOT NULL,
+                        email TEXT NOT NULL
+                    );
+
+INSERT INTO Users (username, email) VALUES ("user1", "user1@example.com");
+
+SELECT * FROM Users;
+
+ALTER TABLE Users ADD COLUMN age INTEGER; #add column to table
+
+INSERT INTO Users (username, email, age) VALUES ("user1", "user1@example.com", "33");
+
+UPDATE Users SET age = 33;
+
+ALTER TABLE table_name RENAME TO new_name;
+
+ALTER TABLE Users DROP COLUMN age;
+
+"""
