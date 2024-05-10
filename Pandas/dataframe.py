@@ -1,4 +1,5 @@
 import pandas as pd
+#Dataframe has row and column index
 
 # create Dataframe from a list of dictionaries
 data = [{'Alex',20},{'Bob',33},{'Claire',45}]
@@ -29,7 +30,7 @@ df['Country'] = new_column_data
 print("\nDataFrame with the new column:")
 print(df)
 
-df.to_csv("df_output.csv")
+#df.to_csv("df_output.csv")
 
 # Creating a dataframe from a list, where each list represents a column
 data_list = [['John', 25, 'Engineer'],
@@ -50,3 +51,6 @@ print(df_list)
 print("\nDataframe created from dictionary:")
 print(df_dict)
 
+#Series: 1D labelled object; two arrays: one is index, the other the values
+S = pd.Series([3,4,7,9,13,15,56])
+S.name = "my_series"
