@@ -1,5 +1,5 @@
 import pandas as pd
-#Dataframe has row and column index
+#Dataframe: 2d labeled data structure; has row and column index
 
 # create Dataframe from a list of dictionaries
 data = [{'Alex',20},{'Bob',33},{'Claire',45}]
@@ -51,6 +51,6 @@ print(df_list)
 print("\nDataframe created from dictionary:")
 print(df_dict)
 
-#Series: 1D labelled object; two arrays: one is index, the other the values
+#Series: 1D labeled object; two arrays: one is index, the other the values
 S = pd.Series([3,4,7,9,13,15,56])
 S.name = "my_series"

@@ -16,22 +16,45 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 #20% of 150 are tested
 
 # Create a KNN classifier with k=3
-knn = KNeighborsClassifier(n_neighbors=3)
+knn = KNeighborsClassifier(n_neighbors=5)
 
 """
 clf = MLPClassifier(solver = 'lbfgs',
                     alpha = 1e-5,
                     hidden_layer_sizes=(8,),
                     random_state=1)
+
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
 """
 
-# Train the classifier
+# Train the classifier (fit the model to the training data)
 knn.fit(X_train, y_train) #train_data, train_labels
 
-# Make predictions on the test data
+# Predict the labels for the test data
 y_pred = knn.predict(X_test)
 
-# Evaluate the accuracy of the classifier
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print("Predictions from the classifier:")
+print(knn.predict(X_test))
+print("Target values:")
+print(y_test)
 
+# Evaluate the accuracy of the classifier (predictions, labels)
+accuracy = accuracy_score(y_test, y_pred)
+#print("Accuracy:", accuracy)
+print(f"Accuracy: {accuracy*100:.2f}%")
+print(f"{accuracy:.2f}")
+
+print("\n")
+
+print(f"Prediction: {knn.predict(X_test[-15:,:])}")
+print(f"Actual:     {y_test[-15:]}")
+print('Accuracy: %.3f' % knn.score(X_test, y_test) )
+
+print("\n")
+
+for k in [1, 3, 5, 7, 10, 50, 100]:
+    kNN = KNeighborsClassifier(n_neighbors=k)
+    kNN.fit(X_train, y_train)
+    test_score = kNN.score(X_test, y_test)
+    print(f"k= {k:3} \t accuracy= {test_score:.3f}")
