@@ -8,7 +8,7 @@ from scipy.ndimage import gaussian_filter1d
 #os.chdir('C:\\Git\\python-misc\\functions\\peak_detection\\CSVs')
 
 # Read the CSV file
-df = pd.read_csv('C:\\Git\python-misc\\functions\\peak_detection\\CSVs\\Kapton_20s_LED2.csv', skiprows=53, nrows=3645)
+df = pd.read_csv('C:\\Git\python-misc\\functions\\peak_detection\\CSVs\\Kapton_8um_2s_52mm.csv', skiprows=53, nrows=3645)
 
 #print(df.head(3))
 #print(df.tail(3))
@@ -40,14 +40,14 @@ print(type(Wavelength))
 #df.to_csv("df_output.csv")
 
 # Smooth the intensity data using a Gaussian filter
-smoothed_intensity = gaussian_filter1d(intensity, sigma=10)
+smoothed_intensity = gaussian_filter1d(intensity, sigma=5)
 
 # Plot the original and smoothed data
 
 plt.figure(figsize=(10, 6))
 ax = plt.axes()
 ax.set_xlim([300,900])
-ax.set_ylim([-0.02, 1.5])
+ax.set_ylim([-0.01, 0.3])
 #ax.set_xticks([])
 #ax.set_yticks([])
 plt.plot(wavelength, intensity, label='Original Data', color='blue')
@@ -55,20 +55,20 @@ plt.plot(wavelength, smoothed_intensity, label='Smoothed Data', color='red')
 plt.legend()
 plt.xlabel('Wavelength')
 plt.ylabel('Intensity')
-plt.title('PET_2_5um_10s_LED2')
+plt.title('Kapton_8um_2s_52mm')
 #plt.xticks(np.arange(0, len(wavelength), step=1000),rotation=0)
 #plt.xticks(rotation=90)
-plt.savefig('PET_2_5um_10s_LED2.png', format='png', dpi=300)
+plt.savefig('Kapton_8um_2s_52mm.png', format='png', dpi=300)
 plt.show()
 
 # Find peaks in the smoothed_intensity data
-peaks, _ = find_peaks(smoothed_intensity, height=0.01, width=3, distance=20)
+peaks, _ = find_peaks(smoothed_intensity, height=0.05, width=0.1, distance=10)
 
 # Plot the smoothed_intensity data with indicated peaks
 plt.figure(figsize=(10, 6))
 ax = plt.axes()
-ax.set_xlim([200,1000])
-ax.set_ylim([-0.02, 1.5])
+ax.set_xlim([300,900])
+ax.set_ylim([-0.01, 0.3])
 #ax.set_xticks([])
 #ax.set_yticks([])
 plt.plot(wavelength, smoothed_intensity, label='Smoothed Data', color='red')

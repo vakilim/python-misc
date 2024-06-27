@@ -8,8 +8,8 @@ def convert_mp4_to_avi(input_path, output_path):
     clip.write_videofile(output_path, codec='mjpeg')
 
 # Example usage
-input_path = "C:\\Users\\vakilim\\Downloads\\a7.mp4"
-output_path = "C:\\Users\\vakilim\\Downloads\\a7_edited.avi"
+input_path = "C:\\Users\\vakilim\\Videos\\Bildschirmaufzeichnungen\\C_43.mp4"
+output_path = "C:\\Users\\vakilim\\Downloads\\C_43_edited.avi"
 convert_mp4_to_avi(input_path, output_path)
 
 
