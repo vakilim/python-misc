@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv('chart.csv')  
 print(df)
 
-# Function to add a new column to the DataFrame
+# a function to add a new column to the DataFrame
 def add_new_column(df, column_name, values):
     df[column_name] = values
 
