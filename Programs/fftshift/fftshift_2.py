@@ -8,17 +8,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters for the sine wave
-y0 = 0  # Baseline value
-A = 1   # Amplitude
-f = 10  # Frequency (in Hz or cycles per 2π)
-phi = 0  # Phase shift (in radians)
 N = 1000  # Number of points
+y0 = 0  # Baseline value
+A = 1  # Amplitude
+f = 10 # Frequency (in Hz or cycles per 2π)
+phi = 0  # Phase shift (in radians)
+T = 2*np.pi # Period in rad
+f_Ny = (N/T)/2
 
 # Generate the x-axis from 0 to 2π
-x = np.linspace(0, 2 * np.pi, N)
+x = np.linspace(0, 2*np.pi, N)
 
 # Generate the sine wave using the equation y = y0 + A * sin(f * x + phi)
-y = y0 + A * np.sin(f * x + phi)
+y = y0 + A * np.sin(f*x + phi)
 
 # Perform FFT
 y_fft = np.fft.fft(y)
@@ -37,13 +39,13 @@ plt.subplot(2, 1, 1)
 plt.plot(x, y)
 plt.title('Original Sine Wave')
 plt.xlabel('x (radians)')
-plt.ylabel('y')
+plt.ylabel('Amplitude')
 
 # Plot the magnitude of the FFT (shifted)
 plt.subplot(2, 1, 2)
 plt.plot(frequencies_shifted, np.abs(y_fft_shifted))
 plt.title('FFT of the Sine Wave (Shifted)')
-plt.xlabel('Frequency')
+plt.xlabel('Frequency (Hz)')
 plt.ylabel('Magnitude')
 
 plt.tight_layout()
