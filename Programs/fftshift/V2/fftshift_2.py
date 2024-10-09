@@ -12,15 +12,16 @@ N = 1000  # Number of points
 y0 = 0  # Baseline value
 A = 1  # Amplitude
 f = 10 # Frequency (in Hz or cycles per 2π)
+omega = 2*np.pi*f
 phi = 0  # Phase shift (in radians)
 T = 2*np.pi # Period in rad
 f_Ny = (N/T)/2
 
 # Generate the x-axis from 0 to 2π
-x = np.linspace(0, 2*np.pi, N)
+t = np.linspace(0, T, N)
 
 # Generate the sine wave using the equation y = y0 + A * sin(f * x + phi)
-y = y0 + A * np.sin(f*x + phi)
+y = y0 + A * np.sin(omega*t + phi)
 
 # Perform FFT
 y_fft = np.fft.fft(y)
@@ -29,16 +30,16 @@ y_fft = np.fft.fft(y)
 y_fft_shifted = np.fft.fftshift(y_fft)
 
 # Compute the frequency axis for plotting FFT
-frequencies = np.fft.fftfreq(N, d=(x[1] - x[0]))
+frequencies = np.fft.fftfreq(N, d=(t[1] - t[0]))
 frequencies_shifted = np.fft.fftshift(frequencies)
 
 # Plot the original sine wave
 plt.figure(figsize=(10, 6))
 
 plt.subplot(2, 1, 1)
-plt.plot(x, y)
+plt.plot(t, y)
 plt.title('Original Sine Wave')
-plt.xlabel('x (radians)')
+plt.xlabel('t (radians)')
 plt.ylabel('Amplitude')
 
 # Plot the magnitude of the FFT (shifted)
@@ -52,7 +53,7 @@ plt.tight_layout()
 plt.show()
 
 # Save the original curve data to a text file
-#np.savetxt('sine_wave.txt', np.column_stack((x, y)), header='x, y', comments='')
+#np.savetxt('sine_wave.txt', np.column_stack((x, y)), header='x, Amplitude', comments='')
 
 # Save the FFT (shifted) data to a text file
 #np.savetxt('fft_shifted.txt', np.column_stack((frequencies_shifted, np.abs(y_fft_shifted))), header='frequency, magnitude', comments='')

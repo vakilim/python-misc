@@ -15,8 +15,9 @@ A = 1 # Amplitude
 f = 10 # Frequency in Hz, cycles per second
 phi = 0 # Phase shift
 T = 1 # Duration in seconds
-N = 1000
+N = 1000 # Number of sample points
 f_Ny = (N/T)/2
+delta_t = T/N
 
 # Create the x-axis (time) array, evenly spaced over the duration
 t = np.linspace(0, T, N)
@@ -27,10 +28,9 @@ y = y0 + A * np.sin(2*np.pi * f * t + phi)
 
 # Perform the FFT
 Y = fft(y)
-#N = len(Y)  # Number of sample points
 
 # Get the frequency axis
-frequencies = fftfreq(N, 1 / (N/T))
+frequencies = fftfreq(N, delta_t)
 
 # Calculate the magnitude of the FFT
 magnitude = np.abs(Y)
@@ -40,7 +40,7 @@ frequencies = frequencies[:N // 2]
 magnitude = magnitude[:N // 2]
 
 # Save the original sine wave data to a text file
-#np.savetxt('sine_wave_data.txt', np.column_stack((t, y)), header='Time\tAmplitude')
+#np.savetxt('sine_data.txt', np.column_stack((t, y)), header='Duration\tAmplitude')
 
 # Save the FFT result (frequency and magnitude) to a text file
 #np.savetxt('fft_data.txt', np.column_stack((frequencies, magnitude)), header='Frequency\tMagnitude')
@@ -66,3 +66,7 @@ plt.grid(True)
 # Adjust layout and show the plot
 plt.tight_layout()
 plt.show()
+
+#Sig=Re+j*Im
+#Phi=np.arctan(Im/Re)
+#Mag=np.sqrt((Re**2)+(Im**2))
