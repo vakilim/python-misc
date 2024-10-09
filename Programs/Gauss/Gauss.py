@@ -16,7 +16,7 @@ x = np.linspace(1,800,500) #start, stop, no. points
 y = gaussian(x,400,180) #x,mu,sig
 
 plt.plot(x,y)
-np.savetxt("output_Gauss.dat", np.array([x, y]).T)
+#np.savetxt("output_Gauss.dat", np.array([x, y]).T)
 plt.show()
 
 
@@ -34,4 +34,6 @@ def FWHM(x, y):
 
 print("FWHM =", FWHM(x, y))
 
+max_index = np.argmax(y)
+print(x[max_index])
    

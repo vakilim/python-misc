@@ -70,3 +70,6 @@ plt.show()
 #Sig=Re+j*Im
 #Phi=np.arctan(Im/Re)
 #Mag=np.sqrt((Re**2)+(Im**2))
+
+max_index = np.argmax(np.abs(Y)) # Find the index of the maximum Y-value
+print(frequencies[max_index]) # Print the index of the x-axis value where the maximum occurs
