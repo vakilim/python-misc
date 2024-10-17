@@ -14,7 +14,7 @@ y0 = 0 # Baseline offset
 A = 1 # Amplitude
 f = 10 # Frequency in Hz, cycles per second
 phi = 0 # Phase shift
-T = 1 # Duration in seconds
+T = 1# Duration in seconds
 N = 1000 # Number of sample points
 f_Ny = (N/T)/2
 delta_t = T/N
@@ -24,7 +24,7 @@ t = np.linspace(0, T, N)
 
 # Generate the sine wave
 #y = np.sin(T*f*t)
-y = y0 + A * np.sin(2*np.pi * f * t + phi)
+y = y0 + A * np.sin(2*np.pi * f * t + phi) #+ np.sin(2*np.pi * 100 * t + phi)
 
 # Perform the FFT
 Y = fft(y)
@@ -36,8 +36,8 @@ frequencies = fftfreq(N, delta_t)
 magnitude = np.abs(Y)
 
 # Only plot the positive frequencies (since FFT is symmetric)
-frequencies = frequencies[:N // 2]
-magnitude = magnitude[:N // 2]
+frequencies = frequencies#[:N // 2]
+magnitude = magnitude#[:N // 2]
 
 # Save the original sine wave data to a text file
 #np.savetxt('sine_data.txt', np.column_stack((t, y)), header='Duration\tAmplitude')

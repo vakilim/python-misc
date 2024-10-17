@@ -36,4 +36,5 @@ print("FWHM =", FWHM(x, y))
 
 max_index = np.argmax(y)
 print(x[max_index])
+
    
