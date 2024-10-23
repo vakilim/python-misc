@@ -11,7 +11,7 @@ import pandas as pd
 
 # Define the shape (a simple rectangle in this case)
 def create_shape():
-    shape = np.zeros((256, 256))
+    shape = np.zeros((512, 512))
     shape[96:160, 96:160] = 1  # A rectangle in the center
     return shape
 
@@ -38,7 +38,7 @@ def save_to_csv(fft2_result, phase, filename):
 
 # Plot the original shape and its FFT magnitude
 def plot_results(shape, magnitude):
-    plt.figure(figsize=(12, 6))
+    plt.figure()
 
     # Plot the original shape
     plt.subplot(1, 2, 1)
@@ -49,10 +49,11 @@ def plot_results(shape, magnitude):
     # Plot the magnitude of the FFT
     plt.subplot(1, 2, 2)
     plt.title("2D FFT Magnitude")
-    plt.imshow(np.log(magnitude + 200), cmap='gray')  # Log scale for better visibility
+    plt.imshow(np.log(magnitude + 100), cmap='gray')  # Log scale for better visibility
     plt.colorbar()
 
-    plt.tight_layout()
+    #plt.tight_layout()
+    plt.savefig('my_figure.tiff', dpi=300, format='tiff', bbox_inches='tight')
     plt.show()
 
 # Main execution
