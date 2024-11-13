@@ -16,29 +16,38 @@ f = 10 # Frequency in Hz, cycles per second
 phi = 0 # Phase shift
 T = 1# Duration in seconds
 T2 = 10
+T3 = 10
 N = 1000 # Number of sample points
 f_Ny = (N/T)/2
 delta_t = T/N
 delta_t2 = T2/N
+delta_t3 = T3/N
 
 
-# Create the x-axis (time) array, evenly spaced over the duration
+# Create the x-axis (time) array, evenly spaced over the duration for the sine wave
 t = np.linspace(0, T, N)
 
-# Define the range of x values
+# Define the range of x values for the box function
 x = np.linspace(-T2/2, T2/2, N)
+
+# Define the range of x values for the sinc function
+t2 = np.linspace(-T3/2, T3/2, N)
 
 # Define the width of the box (2a is the total width, a is half-width)
 a = 1
-
-# Define the box function
-box_function = np.where(np.abs(x) <= a, 1, 0)
 
 # Generate the sine wave
 #y = np.sin(T*f*t)
 y = y0 + A * np.sin(2*np.pi * f * t + phi) #+ np.sin(2*np.pi * 100 * t + phi)
 
-"""
+# Define the box function
+box_function = np.where(np.abs(x) <= a, 1, 0)
+
+# Define the sinc function
+y2 = (np.sin(np.pi*t2) / (np.pi*t2))
+
+
+
 # Perform the FFT
 Y = fft(y)
 
@@ -53,10 +62,10 @@ frequencies = frequencies[:N // 2]
 magnitude = magnitude[:N // 2]
 
 # Save the original sine wave data to a text file
-#np.savetxt('sine_data.txt', np.column_stack((t, y)), header='Duration\tAmplitude')
+np.savetxt('sine_data.txt', np.column_stack((t, y)), header='Duration\tAmplitude')
 
 # Save the FFT result (frequency and magnitude) to a text file
-#np.savetxt('fft_data.txt', np.column_stack((frequencies, magnitude)), header='Frequency\tMagnitude')
+np.savetxt('fft_sine_data.txt', np.column_stack((frequencies, magnitude)), header='Frequency\tMagnitude')
 
 # Plot the original sine wave
 plt.figure(figsize=(10, 6))
@@ -80,15 +89,13 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-"""
-
 
 
 # Perform the FFT
 Z = fft(box_function)
 
 # Get the frequency axis
-frequencies2 = fftfreq(N, delta_t)
+frequencies2 = fftfreq(N, delta_t2)
 
 # Calculate the magnitude of the FFT
 magnitude2 = np.abs(Z)
@@ -98,10 +105,10 @@ frequencies2 = frequencies2[:N // 2]
 magnitude2 = magnitude2[:N // 2]
 
 # Save the original sine wave data to a text file
-np.savetxt('sine_data.txt', np.column_stack((x, box_function)), header='Duration\tAmplitude')
+np.savetxt('box_data.txt', np.column_stack((x, box_function)), header='Duration\tAmplitude')
 
 # Save the FFT result (frequency and magnitude) to a text file
-np.savetxt('fft_data.txt', np.column_stack((frequencies2, magnitude2)), header='Frequency\tMagnitude')
+np.savetxt('fft_box_data.txt', np.column_stack((frequencies2, magnitude2)), header='Frequency\tMagnitude')
 
 # Plot the original box function
 plt.figure(figsize=(10, 6))
@@ -127,6 +134,47 @@ plt.show()
 
 
 
+# Perform the FFT
+Y2 = fft(y2)
+
+# Get the frequency axis
+frequencies3 = fftfreq(N, delta_t3)
+
+# Calculate the magnitude of the FFT
+magnitude3 = np.abs(Y2)
+
+# Only plot the positive frequencies (since FFT is symmetric)
+frequencies3 = frequencies3[:N // 2]
+magnitude3 = magnitude3[:N // 2]
+
+
+# Save the original sine wave data to a text file
+np.savetxt('sinc_data.txt', np.column_stack((t2, y2)), header='Duration\tAmplitude')
+
+# Save the FFT result (frequency and magnitude) to a text file
+np.savetxt('fft_sinc_data.txt', np.column_stack((frequencies, magnitude)), header='Frequency\tMagnitude')
+
+# Plot the original sine wave
+plt.figure(figsize=(10, 6))
+
+plt.subplot(2, 1, 1)
+plt.plot(t2, y2)
+plt.title('Original sinc function')
+plt.xlabel('Duration [s]')
+plt.ylabel('Amplitude')
+plt.grid(True)
+
+# Plot the magnitude of the FFT
+plt.subplot(2, 1, 2)
+plt.plot(frequencies3, magnitude3)
+plt.title('FFT Magnitude Spectrum')
+plt.xlabel('Frequency [Hz]')
+plt.ylabel('Magnitude')
+plt.grid(True)
+
+# Adjust layout and show the plot
+plt.tight_layout()
+plt.show()
 
 
 

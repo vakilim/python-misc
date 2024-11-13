@@ -39,7 +39,7 @@ plt.figure(figsize=(10, 6))
 
 plt.subplot(2, 1, 1)
 plt.plot(t, y)
-#plt.xlim(0, T)
+#plt.xlim(0, 1)
 plt.title('Original Sine Wave')
 plt.xlabel('t (radians)')
 plt.ylabel('Amplitude')
@@ -55,10 +55,10 @@ plt.tight_layout()
 plt.show()
 
 # Save the original curve data to a text file
-#np.savetxt('sine_wave.txt', np.column_stack((x, y)), header='x, Amplitude', comments='')
+np.savetxt('sine.txt', np.column_stack((t, y)), header='x, Amplitude', comments='')
 
 # Save the FFT (shifted) data to a text file
-#np.savetxt('fft_shifted.txt', np.column_stack((frequencies_shifted, np.abs(y_fft_shifted))), header='frequency, magnitude', comments='')
+np.savetxt('fft_shifted_sine.txt', np.column_stack((frequencies_shifted, np.abs(y_fft_shifted))), header='frequency, magnitude', comments='')
 
 max_index = np.argmax(np.abs(y_fft)) # Find the index of the maximum Y-value
 print(frequencies[max_index]) # Print the index of the x-axis value where the maximum occurs
